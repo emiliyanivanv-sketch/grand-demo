@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Екип — Счетоводна къща Гарант, Пловдив</title>
+<meta name="description" content="Запознайте се с екипа на Счетоводна къща Гарант — счетоводители и юристи в Пловдив, нашия екип." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
+  .member {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: start;
+    transition: transform 0.2s, box-shadow 0.25s;
+  }
+  .member:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  @media (max-width: 560px) { .member { grid-template-columns: 1fr; text-align: left; } }
+  .member .avatar {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(45deg, rgba(108,82,132,0.08) 0 10px, transparent 10px 20px),
+      var(--brand-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+    font-size: 2.4rem;
+    font-weight: 800;
+    border: 1px solid var(--border);
+  }
+  .member h3 { font-size: 1.32rem; margin-bottom: 4px; }
+  .member .role {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .member p { font-size: 0.94rem; color: var(--text-3); }
+  .member .contact { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .member .contact a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--border-2);
+    border-radius: 999px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .member .contact a:hover { border-color: var(--text); }
+  .team-note {
+    margin-top: 40px;
+    padding: 24px 28px;
+    background: var(--bg-alt);
+    border-radius: 16px;
+    color: var(--text-2);
+    font-size: 1rem;
+    border: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 Team hero">
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Начало</a><span class="sep">/</span><span>Екип</span></div>
+    <h1 class="reveal" data-delay="100">Нашият екип</h1>
+    <p class="lead reveal" data-delay="200">Хората, които ще се грижат за счетоводството Ви.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Team">
+  <div class="container">
+    <div class="team-grid">
+      <div class="member reveal">
+        <div class="avatar" aria-label="Снимка на Управител">УУ</div>
+        <div>
+          <h3>Управител</h3>
+          <div class="role">Управител · Счетоводител</div>
+          <p>Основател на кантората. С над 15 години опит в счетоводно-данъчното обслужване на малки и средни предприятия, регистрация на фирми и стратегически консултации.</p>
+          <div class="contact">
+            <a href="tel:+359XXXXXXXXX">📞 0XXX XXX XXX</a>
+            <a href="mailto:office@example.com">✉ Имейл</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="member reveal" data-delay="100">
+        <div class="avatar" aria-label="Снимка на Счетоводител">СС</div>
+        <div>
+          <h3>Счетоводител</h3>
+          <div class="role">Счетоводител</div>
+          <p>Специалист по абонаментно счетоводство и ТРЗ. Поддържа ежедневната комуникация с клиентите, отговаря за месечните декларации и онлайн обслужването.</p>
+          <div class="contact">
+            <a href="tel:+359XXXXXXXXX">📞 0XXX XXX XXX</a>
+            <a href="mailto:office@example.com">✉ Имейл</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-note reveal" data-delay="200">
+      <strong style="color: var(--text);">Работим с екип от счетоводители и юристи.</strong> Освен основните контакти, в кантората работят и други специалисти, които покриват юридическата страна на счетоводно-данъчното обслужване и регистрацията на фирми.
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("team");</script>
+</body>
+</html>

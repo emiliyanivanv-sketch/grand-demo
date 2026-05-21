@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Счетоводни услуги в Пловдив — Счетоводна къща Гарант</title>
+<meta name="description" content="Абонаментно счетоводно обслужване, ТРЗ, годишно приключване, консултации и регистрация на фирми в Пловдив. Цени от 50 лв./мес." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---- Layout pattern: alternating sticky-side index + content blocks ---- */
+  .services-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  @media (max-width: 1000px) { .services-layout { grid-template-columns: 1fr; gap: 32px; } }
+
+  .svc-index {
+    position: sticky; top: 180px;
+    border-left: 1px solid var(--border);
+    padding-left: 20px;
+  }
+  @media (max-width: 1000px) {
+    .svc-index { position: static; border-left: none; padding-left: 0; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+  }
+  .svc-index .label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+  .svc-index ol { list-style: none; counter-reset: i; display: flex; flex-direction: column; gap: 2px; }
+  .svc-index ol li { counter-increment: i; }
+  .svc-index ol a {
+    display: flex; gap: 14px; align-items: baseline;
+    padding: 10px 0;
+    font-size: 0.94rem; color: var(--text-2);
+    transition: color 0.15s;
+    border-bottom: 1px dashed transparent;
+  }
+  .svc-index ol a::before {
+    content: counter(i, decimal-leading-zero);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--text-3);
+    flex: 0 0 auto;
+  }
+  .svc-index ol a:hover { color: var(--text); }
+  .svc-index ol a.active { color: var(--accent); font-weight: 600; }
+  .svc-index ol a.active::before { color: var(--accent); }
+
+  /* ---- Service blocks ---- */
+  .svc-block {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 180px;
+  }
+  .svc-block:first-child { padding-top: 0; }
+  .svc-block:last-child { border-bottom: none; }
+  .svc-block .head {
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .svc-block .num {
+    flex: 0 0 64px;
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .svc-block:nth-of-type(even) .num { background: var(--brand-soft); color: var(--brand); }
+  .svc-block .num svg { width: 28px; height: 28px; }
+  .svc-block h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 6px; }
+  .svc-block .step-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-3); text-transform: uppercase; font-family: "JetBrains Mono", monospace; }
+  .svc-block ul.detail {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+    margin-top: 12px;
+  }
+  @media (max-width: 720px) { .svc-block ul.detail { grid-template-columns: 1fr; } }
+  .svc-block ul.detail li {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+  .svc-block ul.detail li::before {
+    content: "";
+    flex: 0 0 6px;
+    width: 6px; height: 6px;
+    margin-top: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .svc-block:nth-of-type(even) ul.detail li::before { background: var(--brand); }
+
+  /* ---- Bottom CTA block ---- */
+  .bottom-cta {
+    background: var(--text);
+    color: #fff;
+    border-radius: 24px;
+    padding: 56px clamp(28px, 5vw, 72px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+  .bottom-cta h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); }
+  .bottom-cta p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-top: 12px; }
+  .bottom-cta .right { display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 800px) {
+    .bottom-cta { grid-template-columns: 1fr; }
+    .bottom-cta .right { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 Services hero">
+  <div class="container">
+    <div class="crumbs reveal">
+      <a href="index.html">Начало</a>
+      <span class="sep">/</span>
+      <span>Счетоводни услуги</span>
+    </div>
+    <h1 class="reveal" data-delay="100">Счетоводни услуги на достъпни цени в град Пловдив</h1>
+    <p class="lead reveal" data-delay="200">Цялостно счетоводно обслужване от <strong style="color:var(--text);">50 лв./мес.</strong> — от месечно осчетоводяване и ТРЗ до годишно приключване и юридически консултации.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Service detail">
+  <div class="container">
+    <div class="services-layout">
+      <aside class="svc-index" aria-label="Раздели">
+        <div class="label">Раздели</div>
+        <ol>
+          <li><a href="#svc-1">Абонаментно счетоводство</a></li>
+          <li><a href="#svc-2">Личен състав и ТРЗ</a></li>
+          <li><a href="#svc-3">Еднократни услуги</a></li>
+          <li><a href="#svc-4">Счетоводни консултации</a></li>
+          <li><a href="#svc-5">Административни услуги</a></li>
+          <li><a href="#svc-6">Консултантски услуги</a></li>
+        </ol>
+      </aside>
+
+      <div>
+        <article class="svc-block reveal" id="svc-1">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">01 — Основна услуга</span>
+              <h3>Абонаментно счетоводно обслужване</h3>
+              <p style="margin-top: 6px;">Месечно поддържане на цялата счетоводна и данъчна отчетност на фирмата Ви.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Изготвяне на счетоводна политика</li>
+            <li>Изготвяне на индивидуален сметкоплан</li>
+            <li>Осчетоводяване на стопански операции</li>
+            <li>Месечни справки-декларации по ЗДДС → НАП</li>
+            <li>ДДС за внасяне или възстановяване</li>
+            <li>ИНТРАСТАТ и VIES декларации</li>
+            <li>Справки за НАП, НОИ, НСИ и банки</li>
+            <li>Справки за вземания и задължения</li>
+            <li>Амортизационни отчисления</li>
+            <li>Текущ финансов резултат</li>
+          </ul>
+        </article>
+
+        <article class="svc-block reveal" id="svc-2">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">02 — Хора и заплати</span>
+              <h3>Личен състав и работна заплата</h3>
+              <p style="margin-top: 6px;">Пълно ТРЗ обслужване — от досие на служителя до ведомости и декларации.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Досиета: трудови и граждански договори</li>
+            <li>Длъжностни характеристики и заповеди</li>
+            <li>Месечни ведомости → НАП</li>
+            <li>Платежни нареждания за осигуровки и данъци</li>
+            <li>Предварителни разчети за осигуровки</li>
+            <li>Болнични листове → НОИ</li>
+            <li>Декларации, служебни бележки, удостоверения</li>
+            <li>Консултации при промени в законодателството</li>
+            <li>Разчети за работни заплати</li>
+          </ul>
+        </article>
+
+        <article class="svc-block reveal" id="svc-3">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">03 — По заявка</span>
+              <h3>Еднократни счетоводни услуги</h3>
+              <p style="margin-top: 6px;">Подходящи за фирми, които правят счетоводството си сами, но имат нужда от професионалист в края на годината.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Годишен финансов отчет — Баланс</li>
+            <li>Отчет за приходи и разходи (ОПР)</li>
+            <li>Отчет за паричен поток</li>
+            <li>Отчет за дълготрайни активи (ДА)</li>
+            <li>Отчет за капитала</li>
+            <li>Статистически отчети → НСИ</li>
+            <li>Годишна данъчна декларация</li>
+            <li>УП-2 и УП-3 удостоверения</li>
+          </ul>
+        </article>
+
+        <article class="svc-block reveal" id="svc-4">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">04 — Експертиза</span>
+              <h3>Счетоводни консултации</h3>
+              <p style="margin-top: 6px;">Стратегически съвети за данъчно планиране и управленски решения.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Стартиране на нов бизнес</li>
+            <li>Оптимизиране на осигуровки и данъци</li>
+            <li>Закон за местните данъци и такси</li>
+            <li>Спогодби за избягване на двойно облагане</li>
+            <li>Данъчни ефекти от управленски решения</li>
+          </ul>
+        </article>
+
+        <article class="svc-block reveal" id="svc-5">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">05 — Удобство</span>
+              <h3>Административни услуги</h3>
+              <p style="margin-top: 6px;">Поемаме рутината, за да се концентрирате върху същинския бизнес.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Събиране на документи от офиса на клиента</li>
+            <li>Онлайн банкиране</li>
+            <li>Представителство пред държавни институции</li>
+          </ul>
+        </article>
+
+        <article class="svc-block reveal" id="svc-6">
+          <div class="head">
+            <div class="num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <div>
+              <span class="step-tag">06 — Партньорство</span>
+              <h3>Консултантски услуги</h3>
+              <p style="margin-top: 6px;">Подкрепа отвъд счетоводството — там, където бизнесът се развива.</p>
+            </div>
+          </div>
+          <ul class="detail">
+            <li>Съдействие при изготвяне на бизнес план</li>
+            <li>Консултации за развитие на бизнеса</li>
+            <li>Съдействие при проблеми с държавни институции</li>
+            <li>Съдействие при регистрация</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="bottom-cta reveal">
+      <div>
+        <span class="tag" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85);">Готови сте?</span>
+        <h2 class="mt-12">Цените на счетоводните услуги започват от 50 лв. на месец</h2>
+        <p>Изпратете ни кратко описание на бизнеса си и ще Ви върнем индивидуална оферта в рамките на 24 часа.</p>
+      </div>
+      <div class="right">
+        <a href="prices.html" class="btn btn-primary btn-lg">Виж цените</a>
+        <a href="contact.html" class="btn btn-ghost btn-lg" style="background: transparent; color: #fff; border-color: rgba(255,255,255,0.25);">Свържи се</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>
+  bootSite("services");
+  // Highlight active section in side index
+  const ids = ["svc-1","svc-2","svc-3","svc-4","svc-5","svc-6"];
+  const links = ids.map(id => document.querySelector('.svc-index a[href="#'+id+'"]'));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l && l.classList.remove("active"));
+        const link = document.querySelector('.svc-index a[href="#'+e.target.id+'"]');
+        if (link) link.classList.add("active");
+      }
+    });
+  }, { rootMargin: "-30% 0px -55% 0px" });
+  ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Цени за счетоводни услуги — Счетоводна къща Гарант, Пловдив</title>
+<meta name="description" content="Индивидуални счетоводни решения за Вашия бизнес. Прозрачно ценообразуване, без скрити такси. Цените започват от 50 лв./мес." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Philosophy — alternating row layout (NOT a card grid) */
+  .philo-list {
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--border);
+  }
+  .philo-row {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1.2fr) minmax(0, 1.5fr);
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  @media (max-width: 800px) { .philo-row { grid-template-columns: 56px 1fr; gap: 20px; } .philo-row p.body { grid-column: 1 / -1; } }
+  .philo-row .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .philo-row .num::after { content: ""; flex: 1; height: 1px; background: var(--border); display: none; }
+  .philo-row .icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .philo-row:nth-child(2) .icon { background: var(--brand-soft); color: var(--brand); }
+  .philo-row:nth-child(3) .icon { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+  .philo-row:nth-child(4) .icon { background: rgba(245, 158, 11, 0.12); color: #b45309; }
+  .philo-row h3 { font-size: 1.32rem; margin-bottom: 6px; }
+  .philo-row p.body { font-size: 1.02rem; color: var(--text-2); line-height: 1.6; }
+
+  /* How we price grid */
+  .how-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .factor-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .factor-list li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .factor-list li:last-child { border-bottom: none; }
+  .factor-list .badge {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .factor-list strong { display: block; font-size: 1rem; margin-bottom: 2px; color: var(--text); }
+  .factor-list span.sub { font-size: 0.88rem; color: var(--text-3); }
+
+  /* Starting price hero card */
+  .price-hero-card {
+    background: linear-gradient(135deg, #1a2240 0%, #2d5bff 80%, #5479ff 100%);
+    border-radius: 24px;
+    padding: 56px clamp(28px, 5vw, 64px);
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-hero-card::before {
+    content: "";
+    position: absolute;
+    top: -30%; left: -10%;
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+  }
+  .price-hero-card::after {
+    content: "";
+    position: absolute;
+    bottom: -40%; right: -10%;
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(108,82,132,0.4), transparent 60%);
+  }
+  .price-hero-card > * { position: relative; z-index: 1; }
+  .price-hero-card .from { font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 600; }
+  .price-hero-card .big {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #fff;
+    line-height: 1;
+    margin: 12px 0 18px;
+  }
+  .price-hero-card .big small { font-size: 0.36em; font-weight: 600; color: rgba(255,255,255,0.7); margin-left: 8px; }
+  .price-hero-card p { color: rgba(255,255,255,0.82); font-size: 1.1rem; max-width: 52ch; margin: 0 auto 28px; }
+  .price-hero-card .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .price-hero-card .btn-primary { background: #fff; color: var(--text); box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3); }
+  .price-hero-card .btn-primary:hover { background: #f1f5f9; }
+  .price-hero-card .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+  .price-hero-card .btn-ghost:hover { border-color: #fff; }
+</style>
+</head>
+<body>
+
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 Prices hero">
+  <div class="container">
+    <div class="crumbs reveal">
+      <a href="index.html">Начало</a>
+      <span class="sep">/</span>
+      <span>Цени</span>
+    </div>
+    <h1 class="reveal" data-delay="100">Индивидуални счетоводни решения за Вашия бизнес</h1>
+    <p class="lead reveal" data-delay="200">Без шаблонни пакети. Цената отразява реалния обем работа, индустрията и етапа на бизнеса Ви — и нищо повече.</p>
+  </div>
+</section>
+
+<!-- ========== PHILOSOPHY ========== -->
+<section data-screen-label="02 Philosophy">
+  <div class="container">
+    <div class="section-head" style="max-width: 640px;">
+      <span class="eyebrow">Нашата философия</span>
+      <h2 class="mt-12">Четири принципа, около които градим всяка оферта</h2>
+    </div>
+
+    <div class="philo-list reveal">
+      <div class="philo-row">
+        <div class="num">01</div>
+        <div>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.5 9 8 9s8-4 8-9V7l-8-5z"/></svg>
+          </div>
+          <h3>Специфично адаптирани пакети</h3>
+        </div>
+        <p class="body">Съобразени с обема, индустрията и етапа на бизнеса Ви. Стартираща фирма с 10 фактури месечно няма да плаща като производствено предприятие със 100 служители.</p>
+      </div>
+
+      <div class="philo-row">
+        <div class="num">02</div>
+        <div>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>Проактивност и ангажираност</h3>
+        </div>
+        <p class="body">Следим непрекъснато за възможности за оптимизиране на данъчни процеси — не чакаме да попитате. Предупреждаваме за крайни срокове и промени в законодателството.</p>
+      </div>
+
+      <div class="philo-row">
+        <div class="num">03</div>
+        <div>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Пълна прозрачност</h3>
+        </div>
+        <p class="body">Без скрити такси. Плащате само за реално ползвани услуги — описани в договора и месечния отчет до последния детайл.</p>
+      </div>
+
+      <div class="philo-row">
+        <div class="num">04</div>
+        <div>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Сигурност и защита</h3>
+        </div>
+        <p class="body">Стриктно спазване на законодателството. Документите Ви се пазят на защитени сървъри, с пълен одитен лог на всяка операция.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW WE PRICE ========== -->
+<section class="section-alt" data-screen-label="03 How we price">
+  <div class="container">
+    <div class="how-grid">
+      <div class="reveal">
+        <span class="eyebrow brand">Как ценообразуваме</span>
+        <h2 class="mt-12">Цената се определя въз основа на:</h2>
+        <p class="mt-20" style="color: var(--text-2);">След кратка консултация изготвяме индивидуална оферта. Без обвързване, без скрити условия.</p>
+        <a href="contact.html" class="btn btn-primary mt-32">Поискай оферта</a>
+      </div>
+
+      <ul class="factor-list reveal" data-delay="100">
+        <li>
+          <span class="badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9v.01M9 13v.01M9 17v.01M15 9v.01M15 13v.01M15 17v.01"/></svg>
+          </span>
+          <div>
+            <strong>Правна форма</strong>
+            <span class="sub">ЕООД, ООД, ЕТ, АД и други — всяка има специфичен обем счетоводна работа.</span>
+          </div>
+        </li>
+        <li>
+          <span class="badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5a3 3 0 1 1 3 5 3 3 0 1 1-3 5"/></svg>
+          </span>
+          <div>
+            <strong>Регистрация по ЗДДС и специфика на транзакциите</strong>
+            <span class="sub">Вътреобщностни доставки, ИНТРАСТАТ, VIES — добавят сложност.</span>
+          </div>
+        </li>
+        <li>
+          <span class="badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </span>
+          <div>
+            <strong>Средномесечен обем на документооборота</strong>
+            <span class="sub">Брой фактури, банкови извлечения, касови операции.</span>
+          </div>
+        </li>
+        <li>
+          <span class="badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </span>
+          <div>
+            <strong>Брой осигурени лица и сложност на ТРЗ</strong>
+            <span class="sub">Трудови, граждански, командировки, доплащания.</span>
+          </div>
+        </li>
+        <li>
+          <span class="badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </span>
+          <div>
+            <strong>Специфични активи, кредити, складово стопанство</strong>
+            <span class="sub">Амортизация, лизинг, материални запаси и инвентаризации.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STARTING PRICE + CTA ========== -->
+<section data-screen-label="04 Starting price">
+  <div class="container">
+    <div class="price-hero-card reveal">
+      <div class="from">Цените започват от</div>
+      <div class="big">50 <small>лв./мес.</small></div>
+      <p>Базовата абонаментна услуга е достъпна за малки фирми и самоосигуряващи се лица. По-големите бизнеси получават индивидуална оферта в рамките на 24 часа.</p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-primary btn-lg">Свържете се с нас за индивидуална оферта</a>
+        <a href="services.html" class="btn btn-ghost btn-lg">Виж услугите</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("prices");</script>
+</body>
+</html>

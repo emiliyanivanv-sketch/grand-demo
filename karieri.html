@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Кариери — Работете при нас | Счетоводна къща Гарант</title>
+<meta name="description" content="Кариерни възможности в Счетоводна къща Гарант, Пловдив. Изпратете CV на office@example.com." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .careers-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+  @media (max-width: 900px) { .careers-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .careers-grid p { font-size: 1.05rem; color: var(--text-2); margin-bottom: 16px; }
+  .culture-points {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 16px;
+    margin-top: 24px;
+  }
+  .culture-points li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 18px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .culture-points li::before {
+    content: "✓";
+    flex: 0 0 28px;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .culture-points strong { color: var(--text); }
+
+  .job-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 32px;
+    position: relative;
+  }
+  .job-card .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .job-card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+  .job-card .meta {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    color: var(--text-3); font-size: 0.92rem;
+    margin-bottom: 20px;
+  }
+  .job-card .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .job-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .job-card ul li { display: flex; gap: 10px; font-size: 0.94rem; }
+  .job-card ul li::before { content: "·"; color: var(--accent); font-weight: 700; flex: 0 0 auto; }
+</style>
+</head>
+<body>
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 Careers hero">
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Начало</a><span class="sep">/</span><span>Кариери</span></div>
+    <h1 class="reveal" data-delay="100">Работете при нас</h1>
+    <p class="lead reveal" data-delay="200">Гарант расте — и търси хора, които искат да се развиват в модерна счетоводна среда.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Culture">
+  <div class="container">
+    <div class="careers-grid">
+      <div class="reveal">
+        <span class="eyebrow brand">Нашата култура</span>
+        <h2 class="mt-12">Кантора без шум, с фокус върху резултата</h2>
+        <p class="mt-20">Малък, спокоен екип в центъра на Пловдив. Работим с tech-forward инструменти и не толерираме хартиена бюрокрация заради бюрокрацията.</p>
+        <p>Ценим хора, които искат да учат, да правят разлика за клиента и да говорят разбираемо за сложни счетоводно-данъчни въпроси.</p>
+        <ul class="culture-points">
+          <li><div><strong>Гъвкаво работно време</strong><br/><span style="color:var(--text-3); font-size: 0.92rem;">Дни от вкъщи са възможни след първите месеци.</span></div></li>
+          <li><div><strong>Обучения и сертификации</strong><br/><span style="color:var(--text-3); font-size: 0.92rem;">Финансираме професионалното Ви развитие.</span></div></li>
+          <li><div><strong>Чисто работно място</strong><br/><span style="color:var(--text-3); font-size: 0.92rem;">Модерен офис в централен Пловдив, с всичко необходимо.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="reveal" data-delay="100">
+        <div class="job-card">
+          <div class="tag-row">
+            <span class="tag">Активна позиция</span>
+            <span class="tag brand">Пловдив</span>
+          </div>
+          <h3>Оперативен счетоводител</h3>
+          <div class="meta">
+            <span>📍 На място / хибридно</span>
+            <span>🕘 Пълен работен ден</span>
+            <span>📅 Старт: незабавно</span>
+          </div>
+          <p style="color: var(--text-2); margin-bottom: 18px;">Търсим колега за оперативно счетоводство на портфолио от малки и средни фирми. Опит от 2+ години и желание за работа с дигитални инструменти.</p>
+          <ul>
+            <li>Месечно осчетоводяване на първични документи</li>
+            <li>Изготвяне на ДДС декларации и справки към НАП</li>
+            <li>Работа с електронен подпис и онлайн банкиране</li>
+            <li>Комуникация с клиенти по различни канали</li>
+          </ul>
+          <a href="mailto:office@example.com?subject=CV%20за%20позиция%20Оперативен%20счетоводител" class="btn btn-primary">Изпрати CV</a>
+        </div>
+
+        <div style="margin-top: 24px; padding: 20px 24px; background: var(--bg-alt); border-radius: 12px; border: 1px solid var(--border); font-size: 0.94rem; color: var(--text-2);">
+          Не виждате подходяща позиция? Изпратете CV на <a href="mailto:office@example.com" style="color: var(--accent); font-weight: 600;">office@example.com</a> — пазим всички кандидатури и се връщаме, когато се отвори място.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("careers");</script>
+</body>
+</html>

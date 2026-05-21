@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Счетоводна къща Гарант — Пловдив | Счетоводно обслужване от 2009 г.</title>
+<meta name="description" content="Счетоводна къща Гарант в Пловдив — пълно счетоводно и юридическо обслужване, регистрация на фирми, онлайн услуги. 4.8★ от 113 Google отзива. От 50 лв./мес." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---- Hero ---- */
+  .hero {
+    position: relative;
+    padding: 64px 0 96px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 20%; right: -10%;
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(45,91,255,0.07), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -20%; left: -10%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(108,82,132,0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .container { position: relative; z-index: 1; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); margin-bottom: 22px; max-width: 18ch; }
+  .hero .subline { font-size: 1.18rem; color: var(--text-2); max-width: 52ch; margin-bottom: 32px; }
+  .hero-cta-row {
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .trust-line {
+    display: flex; align-items: center; gap: 16px;
+    font-size: 0.9rem; color: var(--text-3);
+    flex-wrap: wrap;
+  }
+  .trust-line .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border-2); }
+  .trust-line .rating { display: inline-flex; align-items: center; gap: 6px; }
+  .trust-line .rating .stars-row { font-size: 0.92rem; }
+  .trust-line strong { color: var(--text); font-weight: 600; }
+
+  /* ---- Dashboard mockup ---- */
+  .dashboard {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow:
+      0 24px 60px -20px rgba(15, 23, 42, 0.18),
+      0 8px 24px -8px rgba(15, 23, 42, 0.08);
+    padding: 22px;
+    position: relative;
+    transform: translateY(0) rotate(0);
+  }
+  .dashboard-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .dashboard-head .title { font-weight: 700; font-size: 0.96rem; }
+  .dashboard-head .sub { font-size: 0.78rem; color: var(--text-3); }
+  .dashboard-head .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px;
+    background: rgba(22, 163, 74, 0.1);
+    color: #15803d;
+    border-radius: 999px;
+    font-size: 0.74rem; font-weight: 600;
+  }
+  .dashboard-head .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+  .stat {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    background: #fff;
+  }
+  .stat .label { font-size: 0.74rem; color: var(--text-3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+  .stat .value { font-size: 1.36rem; font-weight: 700; letter-spacing: -0.02em; }
+  .stat .delta { font-size: 0.78rem; margin-top: 4px; font-weight: 600; }
+  .stat .delta.up { color: #16a34a; }
+  .stat .delta.down { color: #dc2626; }
+  .chart {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .chart-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.84rem; }
+  .chart-head .legend { display: flex; gap: 12px; color: var(--text-3); font-size: 0.74rem; }
+  .chart-head .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .chart-head .legend i { width: 8px; height: 8px; border-radius: 2px; }
+  .chart-bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: end; height: 100px; }
+  .chart-col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .chart-col .bars { display: flex; gap: 4px; align-items: flex-end; height: 80px; width: 100%; justify-content: center; }
+  .chart-col .bars i { width: 10px; border-radius: 3px; }
+  .chart-col .bars .b1 { background: var(--accent); }
+  .chart-col .bars .b2 { background: var(--brand); opacity: 0.85; }
+  .chart-col .lbl { font-size: 0.7rem; color: var(--text-3); }
+  .invoice-row {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .invoice-row .left { display: flex; align-items: center; gap: 12px; }
+  .invoice-row .icon-sq {
+    width: 32px; height: 32px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.74rem; font-weight: 700;
+  }
+  .invoice-row .name { font-weight: 600; font-size: 0.86rem; }
+  .invoice-row .meta { font-size: 0.72rem; color: var(--text-3); }
+  .invoice-row .amount { font-weight: 700; font-size: 0.96rem; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 40px 0 64px; }
+  }
+
+  /* ---- Quick link cards ---- */
+  .quicklinks { padding-top: 0; }
+  .ql-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .ql-grid { grid-template-columns: 1fr; } }
+  .ql-card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 320px;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+    isolation: isolate;
+    border: 1px solid var(--border);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+  }
+  .ql-card::before {
+    content: "";
+    position: absolute; inset: 0;
+    transition: transform 0.45s ease;
+    z-index: -2;
+  }
+  .ql-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,17,23,0.1) 0%, rgba(15,17,23,0.75) 80%);
+    z-index: -1;
+    transition: background 0.25s ease;
+  }
+  .ql-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .ql-card:hover::before { transform: scale(1.06); }
+  .ql-card:hover::after { background: linear-gradient(180deg, rgba(15,17,23,0.2) 0%, rgba(15,17,23,0.85) 80%); }
+  .ql-1::before {
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 14px, transparent 14px 28px),
+      linear-gradient(135deg, #2a3556 0%, #1a2240 100%);
+  }
+  .ql-2::before {
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 14px, transparent 14px 28px),
+      linear-gradient(135deg, #4a3a5c 0%, #2c2240 100%);
+  }
+  .ql-3::before {
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 14px, transparent 14px 28px),
+      linear-gradient(135deg, #1a3548 0%, #0f1f30 100%);
+  }
+  .ql-card h3 { color: #fff; margin-bottom: 8px; font-size: 1.4rem; }
+  .ql-card p { color: rgba(255,255,255,0.78); font-size: 0.94rem; margin-bottom: 16px; max-width: 28ch; }
+  .ql-card .link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 0.92rem;
+    color: #fff;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    width: max-content;
+  }
+  .ql-card .link svg { transition: transform 0.2s ease; }
+  .ql-card:hover .link svg { transform: translateX(3px); }
+  .ql-tag {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 5px 10px; border-radius: 999px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---- About intro ---- */
+  .about-intro { background: var(--bg-alt); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-grid h2 { margin-bottom: 20px; }
+  .about-grid .lead { margin-bottom: 24px; }
+  .about-grid ul.checklist {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+    margin: 28px 0;
+  }
+  .about-grid ul.checklist li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 1rem; color: var(--text);
+  }
+  .about-grid ul.checklist li::before {
+    content: "";
+    flex: 0 0 22px;
+    width: 22px; height: 22px;
+    margin-top: 2px;
+    border-radius: 6px;
+    background: var(--accent) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') no-repeat center;
+  }
+  .about-image {
+    aspect-ratio: 5 / 6;
+    border-radius: 20px;
+  }
+
+  /* ---- Services overview ---- */
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 1100px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+  .svc-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+    height: 100%;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .svc-card .icon-bubble {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .svc-card:nth-child(2) .icon-bubble { background: var(--brand-soft); color: var(--brand); }
+  .svc-card:nth-child(3) .icon-bubble { background: rgba(22, 163, 74, 0.1); color: var(--green); }
+  .svc-card:nth-child(4) .icon-bubble { background: rgba(245, 158, 11, 0.12); color: #b45309; }
+  .svc-card h3 { font-size: 1.08rem; line-height: 1.3; margin-bottom: 6px; }
+  .svc-card p { font-size: 0.9rem; color: var(--text-3); }
+
+  /* ---- Startup CTA ---- */
+  .startup-cta-wrap { padding: 0 0 88px; }
+  .startup-cta {
+    background: linear-gradient(135deg, #1a2240 0%, #2a3556 60%, #3d4670 100%);
+    border-radius: 24px;
+    padding: 56px clamp(28px, 5vw, 72px);
+    color: #fff;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .startup-cta::before {
+    content: "";
+    position: absolute;
+    top: -40%; right: -10%;
+    width: 540px; height: 540px;
+    background: radial-gradient(circle, rgba(45,91,255,0.4), transparent 60%);
+    pointer-events: none;
+  }
+  .startup-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -50%; left: 10%;
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, rgba(108,82,132,0.35), transparent 60%);
+    pointer-events: none;
+  }
+  .startup-cta > * { position: relative; z-index: 1; }
+  .startup-cta .icon-rocket {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .startup-cta h2 { color: #fff; font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: 16px; }
+  .startup-cta p { color: rgba(255,255,255,0.82); font-size: 1.05rem; max-width: 48ch; margin-bottom: 28px; }
+  .startup-cta .btn-primary { box-shadow: 0 12px 32px -8px rgba(45, 91, 255, 0.6); }
+  .startup-cta-right {
+    display: flex; justify-content: flex-end;
+  }
+  .startup-stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 340px;
+  }
+  .startup-stat-card .num { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1; margin-bottom: 8px; }
+  .startup-stat-card .num small { font-size: 1.2rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-left: 4px; }
+  .startup-stat-card .desc { color: rgba(255,255,255,0.72); font-size: 0.92rem; margin-bottom: 18px; }
+  .startup-stat-card hr { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 18px 0; }
+  .startup-stat-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: rgba(255,255,255,0.82); }
+  .startup-stat-card ul li::before { content: "✓ "; color: #4ade80; font-weight: 700; }
+  @media (max-width: 900px) {
+    .startup-cta { grid-template-columns: 1fr; padding: 40px 28px; }
+    .startup-cta-right { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div id="siteHeaderSlot"></div>
+
+<!-- ========== HERO ========== -->
+<main>
+<section class="hero" data-screen-label="01 Hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Счетоводна къща в Пловдив от 2009 г.</span>
+        <h1>Отделяте ли повече време за борба със законодателството, отколкото за развитието на бизнеса си?</h1>
+        <p class="subline">Счетоводна къща Гарант ще разреши счетоводните Ви проблеми на цена, която ще Ви изненада приятно.</p>
+        <div class="hero-cta-row">
+          <a href="prices.html" class="btn btn-primary btn-lg">
+            Вижте цените за счетоводно обслужване
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="contact.html" class="btn btn-ghost btn-lg">Безплатна консултация</a>
+        </div>
+        <div class="trust-line">
+          <span class="rating">
+            <span class="stars-row">★★★★★</span>
+            <strong>4.8</strong>
+            <span>от 113 Google отзива</span>
+          </span>
+          <span class="dot"></span>
+          <span>От <strong>2009 г.</strong></span>
+          <span class="dot"></span>
+          <span>Пловдив</span>
+        </div>
+      </div>
+
+      <!-- Dashboard mockup -->
+      <div class="reveal" data-delay="200" aria-hidden="true">
+        <div class="dashboard">
+          <div class="dashboard-head">
+            <div>
+              <div class="title">Месечен преглед</div>
+              <div class="sub">Май 2026 · Фирма ООД</div>
+            </div>
+            <span class="pill">Подадено в НАП</span>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <div class="label">Приходи</div>
+              <div class="value">48 320 лв.</div>
+              <div class="delta up">↑ 12.4% спрямо април</div>
+            </div>
+            <div class="stat">
+              <div class="label">Разходи</div>
+              <div class="value">31 870 лв.</div>
+              <div class="delta down">↓ 3.1% спрямо април</div>
+            </div>
+          </div>
+
+          <div class="chart">
+            <div class="chart-head">
+              <strong>Q2 · седмично</strong>
+              <div class="legend">
+                <span><i style="background:var(--accent);"></i> Приходи</span>
+                <span><i style="background:var(--brand);"></i> Разходи</span>
+              </div>
+            </div>
+            <div class="chart-bars">
+              <div class="chart-col">
+                <div class="bars">
+                  <i class="b1" style="height: 48%;"></i>
+                  <i class="b2" style="height: 36%;"></i>
+                </div>
+                <div class="lbl">с.18</div>
+              </div>
+              <div class="chart-col">
+                <div class="bars">
+                  <i class="b1" style="height: 62%;"></i>
+                  <i class="b2" style="height: 42%;"></i>
+                </div>
+                <div class="lbl">с.19</div>
+              </div>
+              <div class="chart-col">
+                <div class="bars">
+                  <i class="b1" style="height: 78%;"></i>
+                  <i class="b2" style="height: 54%;"></i>
+                </div>
+                <div class="lbl">с.20</div>
+              </div>
+              <div class="chart-col">
+                <div class="bars">
+                  <i class="b1" style="height: 92%;"></i>
+                  <i class="b2" style="height: 60%;"></i>
+                </div>
+                <div class="lbl">с.21</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="invoice-row">
+            <div class="left">
+              <span class="icon-sq">№42</span>
+              <div>
+                <div class="name">Фактура #2026-042</div>
+                <div class="meta">ДДС 20% · издадена днес</div>
+              </div>
+            </div>
+            <div class="amount">2 480.00 лв.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUICK LINKS ========== -->
+<section class="quicklinks" data-screen-label="02 Quick links" style="padding-bottom: 88px;">
+  <div class="container">
+    <div class="ql-grid">
+      <a href="services.html" class="ql-card ql-1 reveal">
+        <span class="ql-tag">01 — Услуги</span>
+        <h3>Счетоводни услуги</h3>
+        <p>Нашите счетоводни услуги — подробно.</p>
+        <span class="link">Разгледай <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="prices.html" class="ql-card ql-2 reveal" data-delay="100">
+        <span class="ql-tag">02 — Цени</span>
+        <h3>Цени</h3>
+        <p>Разнообразни варианти, подходящи за бюджета Ви.</p>
+        <span class="link">Виж цените <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="contact.html" class="ql-card ql-3 reveal" data-delay="200">
+        <span class="ql-tag">03 — Контакти</span>
+        <h3>Контакти</h3>
+        <p>Свържете се с нас по най-удобния за Вас начин.</p>
+        <span class="link">Свържи се <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT INTRO ========== -->
+<section class="about-intro" data-screen-label="03 About">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow brand">За нас</span>
+        <h2 class="mt-12">Счетоводни услуги в град Пловдив</h2>
+        <p class="lead mt-12">Гарант предлага цялостно счетоводно обслужване на малки и средни фирми, както и на самоосигуряващи се лица. Работим с екип от счетоводители и юристи, използваме съвременни tech-forward решения и градим дългосрочно доверие с клиентите си.</p>
+        <ul class="checklist">
+          <li>Вие искате най-доброто за фирмата си</li>
+          <li>Вие търсите висококачествено счетоводно обслужване</li>
+          <li>Вие търсите индивидуално отношение</li>
+        </ul>
+        <div style="display:flex; gap: 14px; flex-wrap: wrap;">
+          <a href="za-nas.html" class="btn btn-dark">Повече за нас</a>
+          <a href="team.html" class="btn btn-ghost">Запознайте се с екипа</a>
+        </div>
+      </div>
+      <div class="reveal" data-delay="200">
+        <div class="img-placeholder about-image">
+          Офисът на Счетоводна къща Гарант в Пловдив
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES OVERVIEW ========== -->
+<section data-screen-label="04 Services overview">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Какво правим</span>
+      <h2 class="mt-12">Четири стълба на нашата работа</h2>
+      <p class="lead mt-12">Цялостно покритие на счетоводните, данъчните и юридическите нужди на Вашия бизнес.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="icon-bubble">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+        </div>
+        <h3>Пълно счетоводно обслужване и данъчни консултации</h3>
+        <p>Месечно осчетоводяване, ДДС, ИНТРАСТАТ, годишно приключване и текущ финансов резултат.</p>
+      </div>
+      <div class="svc-card reveal" data-delay="100">
+        <div class="icon-bubble">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l3-3h12l3 3v15H3z"/><path d="M3 10h18"/><path d="M9 14h6"/></svg>
+        </div>
+        <h3>Юридически услуги по данъчно и счетоводно законодателство</h3>
+        <p>Екипът от юристи защитава интересите Ви пред НАП, НОИ, НСИ и Търговския регистър.</p>
+      </div>
+      <div class="svc-card reveal" data-delay="200">
+        <div class="icon-bubble">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h3>Счетоводни, финансови и правни консултации</h3>
+        <p>Стартиране на нов бизнес, оптимизиране на данъци и осигуровки, анализ на управленски решения.</p>
+      </div>
+      <div class="svc-card reveal" data-delay="300">
+        <div class="icon-bubble">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <h3>Личен състав и работна заплата</h3>
+        <p>Досиета на служители, месечни ведомости към НАП, болнични към НОИ и пълно ТРЗ обслужване.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STARTUP CTA ========== -->
+<section class="startup-cta-wrap" data-screen-label="05 Startup CTA">
+  <div class="container">
+    <div class="startup-cta reveal">
+      <div>
+        <span class="icon-rocket">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </span>
+        <h2>Стартирате бизнес?</h2>
+        <p>Имаме специални предложения за стартиращи фирми. Регистрирайте фирмата си чрез нас и се възползвайте от многобройните ни допълнителни отстъпки.</p>
+        <a href="registracia-na-firma.html" class="btn btn-primary btn-lg">Повече информация</a>
+      </div>
+      <div class="startup-cta-right">
+        <div class="startup-stat-card">
+          <div class="num">1–3 <small>раб. дни</small></div>
+          <div class="desc">Срок за регистрация на ЕООД или ООД от подаване до готовност.</div>
+          <hr />
+          <ul>
+            <li>Лична консултация с юрист и счетоводител</li>
+            <li>Документи на място — за ~15 минути</li>
+            <li>Нотариус и банки на 30 м. от офиса</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("home");</script>
+</body>
+</html>

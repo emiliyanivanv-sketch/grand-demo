@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Блог — Счетоводна къща Гарант, Пловдив</title>
+<meta name="description" content="Блог за бизнес и предприемачество от Счетоводна къща Гарант. Стартиране на бизнес, малък бизнес, счетоводство — оригинално съдържание от 2010 г." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Category section */
+  .cat-section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-section:last-of-type { border-bottom: none; }
+  .cat-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .cat-head .left { display: flex; flex-direction: column; gap: 8px; }
+  .cat-head .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .cat-head h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+  .cat-head .see-all {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.92rem; font-weight: 600;
+    color: var(--text-2);
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .cat-head .see-all:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Article grid */
+  .blog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 1000px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .blog-grid { grid-template-columns: 1fr; } }
+
+  .article {
+    display: flex; flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+  .article:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .article .thumb {
+    aspect-ratio: 4 / 3;
+    background:
+      repeating-linear-gradient(45deg, rgba(45,91,255,0.04) 0 12px, transparent 12px 24px),
+      var(--bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+  .article .thumb-glyph {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+    opacity: 0.5;
+  }
+  .article:nth-child(2) .thumb { background: repeating-linear-gradient(45deg, rgba(108,82,132,0.05) 0 12px, transparent 12px 24px), #f4f1f7; }
+  .article:nth-child(3) .thumb { background: repeating-linear-gradient(45deg, rgba(22,163,74,0.05) 0 12px, transparent 12px 24px), #f0f6f1; }
+  .article:nth-child(4) .thumb { background: repeating-linear-gradient(45deg, rgba(245,158,11,0.06) 0 12px, transparent 12px 24px), #faf6ee; }
+  .article .body {
+    padding: 20px 22px 22px;
+    display: flex; flex-direction: column;
+    flex: 1;
+    gap: 10px;
+  }
+  .article .date {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+  }
+  .article h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: var(--text);
+    flex: 1;
+  }
+  .article .read {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; font-size: 0.86rem;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+  .article:hover .read svg { transform: translateX(3px); }
+  .article .read svg { transition: transform 0.2s ease; }
+
+  /* Stats bar */
+  .blog-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) { .blog-stats { grid-template-columns: 1fr; } }
+  .blog-stats > div {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .blog-stats > div:last-child { border-right: none; }
+  .blog-stats .n { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text); line-height: 1; }
+  .blog-stats .l { font-size: 0.88rem; color: var(--text-3); margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 Blog hero">
+  <div class="container">
+    <div class="crumbs reveal">
+      <a href="index.html">Начало</a>
+      <span class="sep">/</span>
+      <span>Блог</span>
+    </div>
+    <h1 class="reveal" data-delay="100">Блог на Счетоводна къща Гарант</h1>
+    <p class="lead reveal" data-delay="200">От 2010 г. създаваме качествено и оригинално съдържание на тема бизнес и предприемачество.</p>
+
+    <div class="blog-stats reveal" data-delay="300">
+      <div>
+        <div class="n">15+ <span style="font-size:1rem; color:var(--text-3);">години</span></div>
+        <div class="l">Публикуваме непрекъснато от 2010 г.</div>
+      </div>
+      <div>
+        <div class="n">4 <span style="font-size:1rem; color:var(--text-3);">категории</span></div>
+        <div class="l">От стартиране на бизнес до счетоводство</div>
+      </div>
+      <div>
+        <div class="n">100% <span style="font-size:1rem; color:var(--text-3);">оригинално</span></div>
+        <div class="l">Авторско съдържание, не преразказ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATEGORY: НАЙ-НОВИ ========== -->
+<section class="cat-section" data-screen-label="02 Latest">
+  <div class="container">
+    <div class="cat-head">
+      <div class="left">
+        <span class="label">Категория · 01</span>
+        <h2>Най-нови статии</h2>
+      </div>
+      <a href="#" class="see-all">Вижте всички
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="article reveal">
+        <div class="thumb" role="img" aria-label="Илюстрация за статия — жизнен цикъл на бизнеса, част 2">
+          <span class="thumb-glyph"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+        </div>
+        <div class="body">
+          <span class="date">14 декември 2023</span>
+          <h3>Жизнен цикъл на бизнеса: 5 етапа на развитие – част 2</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="100">
+        <div class="thumb" role="img" aria-label="Илюстрация за статия — жизнен цикъл на бизнеса, част 1">
+          <span class="thumb-glyph"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg></span>
+        </div>
+        <div class="body">
+          <span class="date">5 декември 2023</span>
+          <h3>Жизнен цикъл на бизнеса: 5 етапа на развитие – част 1</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="200">
+        <div class="thumb" role="img" aria-label="Илюстрация за статия — уъркшоп за бизнеса, част 2">
+          <span class="thumb-glyph"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+        </div>
+        <div class="body">
+          <span class="date">30 ноември 2023</span>
+          <h3>Защо бизнесът се нуждае от уъркшоп: част 2</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="300">
+        <div class="thumb" role="img" aria-label="Илюстрация за статия — как да започнете собствен бизнес">
+          <span class="thumb-glyph"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></span>
+        </div>
+        <div class="body">
+          <span class="date">15 ноември 2023</span>
+          <h3>Как да започнете собствен бизнес</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATEGORY: СТАРТИРАНЕ НА БИЗНЕС ========== -->
+<section class="cat-section section-alt" data-screen-label="03 Startup">
+  <div class="container">
+    <div class="cat-head">
+      <div class="left">
+        <span class="label" style="color: var(--brand);">Категория · 02</span>
+        <h2>Стартиране на бизнес</h2>
+      </div>
+      <a href="#" class="see-all">Вижте всички
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="article reveal">
+        <div class="thumb" role="img" aria-label="Илюстрация — как да започнете собствен бизнес"></div>
+        <div class="body">
+          <span class="date">15 ноември 2023</span>
+          <h3>Как да започнете собствен бизнес</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="100">
+        <div class="thumb" role="img" aria-label="Илюстрация — 8 типа инвеститори"></div>
+        <div class="body">
+          <span class="date">8 ноември 2023</span>
+          <h3>8 типа инвеститори, които предприемачите трябва да избягват</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="200">
+        <div class="thumb" role="img" aria-label="Илюстрация — жизнен цикъл, част 1"></div>
+        <div class="body">
+          <span class="date">5 декември 2023</span>
+          <h3>Жизнен цикъл на бизнеса: 5 етапа на развитие – част 1</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="300">
+        <div class="thumb" role="img" aria-label="Илюстрация — жизнен цикъл, част 2"></div>
+        <div class="body">
+          <span class="date">14 декември 2023</span>
+          <h3>Жизнен цикъл на бизнеса: 5 етапа на развитие – част 2</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATEGORY: МАЛКИЯТ БИЗНЕС ========== -->
+<section class="cat-section" data-screen-label="04 Small business">
+  <div class="container">
+    <div class="cat-head">
+      <div class="left">
+        <span class="label" style="color: var(--green);">Категория · 03</span>
+        <h2>За малкия бизнес</h2>
+      </div>
+      <a href="#" class="see-all">Вижте всички
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="article reveal">
+        <div class="thumb" role="img" aria-label="Илюстрация — защо бизнесът се нуждае от уъркшоп"></div>
+        <div class="body">
+          <span class="date">30 ноември 2023</span>
+          <h3>Защо бизнесът се нуждае от уъркшоп: част 2</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="100">
+        <div class="thumb" role="img" aria-label="Илюстрация — 8 типа инвеститори"></div>
+        <div class="body">
+          <span class="date">8 ноември 2023</span>
+          <h3>8 типа инвеститори, които предприемачите трябва да избягват</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="200">
+        <div class="thumb" role="img" aria-label="Илюстрация — нужда от външен счетоводител"></div>
+        <div class="body">
+          <span class="date">15 юни 2021</span>
+          <h3>Кога имате нужда от външен счетоводител и въобще необходим ли е?</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="300">
+        <div class="thumb" role="img" aria-label="Илюстрация — как да започнете собствен бизнес"></div>
+        <div class="body">
+          <span class="date">15 ноември 2023</span>
+          <h3>Как да започнете собствен бизнес</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATEGORY: СЧЕТОВОДСТВО ========== -->
+<section class="cat-section section-alt" data-screen-label="05 Accounting">
+  <div class="container">
+    <div class="cat-head">
+      <div class="left">
+        <span class="label" style="color: #b45309;">Категория · 04</span>
+        <h2>Счетоводство</h2>
+      </div>
+      <a href="#" class="see-all">Вижте всички
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="article reveal">
+        <div class="thumb" role="img" aria-label="Илюстрация — кога имате нужда от външен счетоводител"></div>
+        <div class="body">
+          <span class="date">15 юни 2021</span>
+          <h3>Кога имате нужда от външен счетоводител и въобще необходим ли е?</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="100">
+        <div class="thumb" role="img" aria-label="Илюстрация — счетоводен одит"></div>
+        <div class="body">
+          <span class="date">20 февруари 2021</span>
+          <h3>Счетоводен одит – защо е необходим?</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="200">
+        <div class="thumb" role="img" aria-label="Илюстрация — продуктивност на счетоводителя"></div>
+        <div class="body">
+          <span class="date">14 ноември 2020</span>
+          <h3>Как да бъдете по-продуктивни в работата си като счетоводител</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="article reveal" data-delay="300">
+        <div class="thumb" role="img" aria-label="Илюстрация — жизнен цикъл, част 2"></div>
+        <div class="body">
+          <span class="date">14 декември 2023</span>
+          <h3>Жизнен цикъл на бизнеса: 5 етапа на развитие – част 2</h3>
+          <a href="#" class="read">Цялата статия <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("blog");</script>
+</body>
+</html>

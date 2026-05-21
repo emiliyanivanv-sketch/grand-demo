@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>За нас — Счетоводна къща Гарант</title>
+<meta name="description" content="Счетоводна къща Гарант — основана 2009 г. в Пловдив. Екип от счетоводители и юристи, tech-forward подход, индивидуално отношение." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .about-grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .about-grid-2 { grid-template-columns: 1fr; gap: 40px; } }
+  .about-grid-2 p { font-size: 1.05rem; color: var(--text-2); margin-bottom: 18px; }
+  .timeline {
+    border-left: 2px solid var(--border);
+    padding-left: 24px;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .timeline .item { position: relative; }
+  .timeline .item::before {
+    content: "";
+    position: absolute;
+    left: -32px; top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px var(--border);
+  }
+  .timeline .y { font-family: "JetBrains Mono", monospace; font-size: 0.84rem; color: var(--accent); font-weight: 700; }
+  .timeline h4 { font-size: 1.05rem; margin: 4px 0 4px; }
+  .timeline p { font-size: 0.94rem; color: var(--text-3); }
+</style>
+</head>
+<body>
+<div id="siteHeaderSlot"></div>
+
+<main>
+<section class="page-hero" data-screen-label="01 About hero">
+  <div class="container">
+    <div class="crumbs reveal"><a href="index.html">Начало</a><span class="sep">/</span><span>За нас</span></div>
+    <h1 class="reveal" data-delay="100">За нас — Счетоводна къща Гарант</h1>
+    <p class="lead reveal" data-delay="200">От 2009 г. помагаме на бизнеси в Пловдив и страната да растат уверено, без да се препъват в законодателството.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 Story">
+  <div class="container">
+    <div class="about-grid-2">
+      <div class="reveal">
+        <span class="eyebrow brand">Нашата история</span>
+        <h2 class="mt-12">Малка кантора с голяма амбиция за качество</h2>
+        <p class="mt-20">Започнахме през 2009 г. в централен Пловдив с убеждението, че счетоводството може да бъде по-достъпно, по-разбираемо и по-полезно за предприемача. През годините израснахме до екип от счетоводители и юристи, които работят рамо до рамо — за да получавате не само цифри, а и съвет.</p>
+        <p>Обслужваме малки и средни фирми, самоосигуряващи се лица и — особено охотно — нови бизнеси, които правят първите си стъпки. Знаем колко важни са те и колко въпроси изникват в първите месеци.</p>
+        <p>Tech-forward подходът ни е съзнателен избор: електронен подпис, онлайн фактуриране, цифрови документи, комуникация по Viber, WhatsApp, Zoom, Telegram и Messenger. Когато сте заети с бизнеса си, не Ви трябват дълги визити в офиса.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
+          <a href="contact.html" class="btn btn-primary">Свържи се с нас</a>
+          <a href="team.html" class="btn btn-ghost">Запознай се с екипа</a>
+        </div>
+      </div>
+
+      <div class="reveal" data-delay="100">
+        <div class="timeline">
+          <div class="item">
+            <div class="y">2009</div>
+            <h4>Основаване</h4>
+            <p>Счетоводна къща Гарант отваря врати в центъра на Пловдив.</p>
+          </div>
+          <div class="item">
+            <div class="y">2010</div>
+            <h4>Стартира блогът</h4>
+            <p>Започваме да публикуваме оригинално съдържание за бизнес и предприемачество.</p>
+          </div>
+          <div class="item">
+            <div class="y">2015</div>
+            <h4>Юридическо звено</h4>
+            <p>Към екипа се присъединяват юристи — предлагаме интегрирана услуга.</p>
+          </div>
+          <div class="item">
+            <div class="y">2020</div>
+            <h4>100% онлайн обслужване</h4>
+            <p>Цифровизираме процеса — от документ до подадена декларация, всичко дистанционно.</p>
+          </div>
+          <div class="item">
+            <div class="y">2026</div>
+            <h4>4.8 ★ от 113 Google отзива</h4>
+            <p>Над 15 години доверие, изградено клиент по клиент.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooterSlot"></div>
+<div id="floatingContactSlot"></div>
+
+<script src="site.js"></script>
+<script>bootSite("about");</script>
+</body>
+</html>
