@@ -18,7 +18,7 @@ function renderHeader(active = "") {
     { href: "index.html", label: "Начало", key: "home" },
     { href: "services.html", label: "Счетоводни услуги", key: "services" },
     { href: "online-services.html", label: "Онлайн услуги", key: "online" },
-    { href: "registracia-na-firma.html", label: "Регистрация на фирми", key: "reg", badge: "Изгодно!" },
+    { href: "registracia-na-firma.html", label: "Регистрация на фирми", key: "reg" },
     { href: "prices.html", label: "Цени", key: "prices" },
     { href: "blog.html", label: "Блог", key: "blog" },
     { href: "contact.html", label: "За контакт", key: "contact" },
@@ -29,7 +29,6 @@ function renderHeader(active = "") {
     { href: "karieri.html", label: "Кариери", key: "careers" },
     { href: "testimonials.html", label: "Отзиви", key: "testimonials" },
     { href: "team.html", label: "Екип", key: "team" },
-    { href: "more.html", label: "Други услуги", key: "more" },
   ];
 
   return `
@@ -40,7 +39,7 @@ function renderHeader(active = "") {
           ${utilityItems.map(i => `<a href="${i.href}" class="${active === i.key ? "active" : ""}">${i.label}</a>`).join("")}
         </nav>
         <div class="utility-right">
-          <a href="https://www.facebook.com/garantaccounting/" target="_blank" rel="noopener" class="fb-icon" aria-label="Facebook">
+          <a href="#" class="fb-icon" aria-label="Facebook">
             ${icons.facebook}
           </a>
           <a href="#" class="lang-toggle" aria-label="English">EN</a>
@@ -120,7 +119,6 @@ function renderFooter() {
             <li><a href="online-services.html">Онлайн услуги</a></li>
             <li><a href="registracia-na-firma.html">Регистрация на фирми</a></li>
             <li><a href="prices.html">Цени</a></li>
-            <li><a href="more.html">Други услуги</a></li>
           </ul>
         </div>
         <div>
@@ -147,7 +145,7 @@ function renderFooter() {
       <div class="footer-bottom">
         <span>© 2009–2026 Счетоводна къща Гарант ЕООД. Всички права запазени.</span>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/garantaccounting/" target="_blank" rel="noopener" aria-label="Facebook">${icons.facebook}</a>
+          <a href="#" aria-label="Facebook">${icons.facebook}</a>
         </div>
       </div>
     </div>
