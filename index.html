@@ -337,6 +337,21 @@
     .startup-cta { grid-template-columns: 1fr; padding: 40px 28px; }
     .startup-cta-right { justify-content: flex-start; }
   }
+  @media (max-width: 768px) {
+    body { overflow-x: hidden; }
+    .hero { overflow-x: hidden; }
+    .hero-cta-row .btn-primary {
+      font-size: 0.9rem;
+      padding: 14px 20px;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+    .dashboard {
+      overflow: hidden;
+      max-width: 100%;
+    }
+  }
 </style>
 </head>
 <body>
