@@ -459,6 +459,7 @@ section.tight { padding: 56px 0; }
 .stars-row { color: #fbbf24; letter-spacing: 2px; font-size: 0.94rem; }
 
 /* ---------- Mobile nav ---------- */
+html.nav-open { overflow: hidden; }
 .mobile-nav {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;

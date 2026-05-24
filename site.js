@@ -194,14 +194,14 @@ function bootSite(activeKey) {
     hamburger.addEventListener("click", () => {
       mobileNav.classList.add("open");
       mobileNav.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      document.documentElement.classList.add("nav-open");
     });
   }
   if (mobileClose && mobileNav) {
     const closeNav = () => {
       mobileNav.classList.remove("open");
       mobileNav.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+      document.documentElement.classList.remove("nav-open");
     };
     mobileClose.addEventListener("click", closeNav);
     mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNav));
